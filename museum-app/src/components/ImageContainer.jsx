@@ -6,6 +6,14 @@ ImageContainer.propTypes = {
     imagesData : PropTypes.array.isRequired
   };
 
+const splitImageDate = (longDesc) => {
+  let valeurs = longDesc?.split(", ");
+
+if (valeurs && valeurs.length > 0) {
+    return valeurs[valeurs.length - 1];
+} 
+}
+
 function ImageContainer({imagesData}){
     const images = imagesData.map((image, index) => {
         return (
@@ -15,6 +23,7 @@ function ImageContainer({imagesData}){
             painter={image.principalOrFirstMaker} 
             url={image.webImage.url}
             isPortrait={image.webImage.width < image.webImage.height}
+            year={splitImageDate(image.longTitle)}
           />
         );
       });
