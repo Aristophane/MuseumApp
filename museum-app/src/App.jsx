@@ -1,10 +1,17 @@
 import './App.css'
-import PaintingDisplay from './components/PaintingDisplay'
+import ImageContainer from './components/ImageContainer'
+import data from "./infosMockAPI.json"
 
 function App() {
+// console.log(data.artObjects)
+
   return (
     <>
-      <PaintingDisplay/>
+    <div className="appContent">
+
+       <ImageContainer imagesData={data.artObjects}/> 
+       
+    </div>
     </>
   )
 }
