@@ -5,12 +5,13 @@ import styled from 'styled-components';
 function PaintingDisplay({ title, painter, url, isPortrait = true, year }) {
 
     const Container = styled.div`
+        position: relative;
     display: flex;
     flex-direction: column;
     width: ${isPortrait ? "20%" : "80%"};
     background-color: #e6e6e6;
     border: #e6e6e6;
-    padding: 1rem;
+    gap:1rem;
     border-radius: 0.5rem;
 
     @media (max-width: 768px){
@@ -20,15 +21,23 @@ function PaintingDisplay({ title, painter, url, isPortrait = true, year }) {
     p {
     font-size: 1rem;
     margin: 0px;
-    text-align: center;
-}
- `;
+    text-align: left;
+    color: white;
+}`;
+
+const LibelleContainer = styled.div`
+    position: absolute;
+    bottom:1rem;
+    left:1rem;
+`;
 
     return (<>
         <Container>
             <img src={url}></img>
-            <p>{title} - {year}</p>
-            <p className={style.painterName}>{painter}</p>
+            <LibelleContainer>
+                <p>{title} - {year}</p>
+                <p className={style.painterName}>{painter}</p>
+            </LibelleContainer>
         </Container>
     </>)
 }
