@@ -9,8 +9,6 @@ function PaintingDisplay({ title, painter, url, isPortrait = true, year }) {
     display: flex;
     flex-direction: column;
     width: ${isPortrait ? "20%" : "80%"};
-    background-color: #e6e6e6;
-    border: #e6e6e6;
     gap:1rem;
     border-radius: 0.5rem;
 

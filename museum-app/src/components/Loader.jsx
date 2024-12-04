@@ -28,7 +28,7 @@ const Loader = styled.div`
 const LoaderComponent = () => {
     return (
         <LoaderContainer>
-            <h1>Chargement de votre collection</h1>
+            <h1>Chargement de la collection</h1>
             <Loader />
         </LoaderContainer>
     );
