@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import ImageContainer from './components/ImageContainer'
+import LoaderComponent from './components/Loader';
 // import data from "./infosMockAPI.json"
 
 function App() {
@@ -17,7 +18,6 @@ function App() {
       setData(result);
       setIsLoading(false);
     };
-
     fetchData();
   }, []);
 
@@ -25,7 +25,7 @@ function App() {
   return (
     <>
       <div className="appContent">
-        {isLoading ? "LOADING" : <ImageContainer imagesData={data.artObjects} />}
+        {isLoading ? <div><LoaderComponent></LoaderComponent></div> : <ImageContainer imagesData={data.artObjects} />}
       </div>
     </>
   )
