@@ -1,8 +1,10 @@
 import style from './PaintingDisplay.module.css'
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 function PaintingDisplay({ title, painter, url, isPortrait = true, year }) {
+
 
     const Container = styled.div`
         position: relative;
@@ -13,7 +15,7 @@ function PaintingDisplay({ title, painter, url, isPortrait = true, year }) {
     border-radius: 0.5rem;
 
     @media (max-width: 768px){
-            width: ${isPortrait ? "30%" : "80%"}
+        width: ${isPortrait ? "30%" : "80%"}
     }
 
     p {
@@ -21,17 +23,29 @@ function PaintingDisplay({ title, painter, url, isPortrait = true, year }) {
     margin: 0px;
     text-align: left;
     color: white;
-}`;
+    }`;
 
-const LibelleContainer = styled.div`
-    position: absolute;
-    bottom:1rem;
-    left:1rem;
-`;
+    const LibelleContainer = styled.div`
+        position: absolute;
+        bottom: 0rem;
+        width: 100%;
+        left: 0rem;
+        padding-bottom: 1rem;
+        padding-left: 1rem;
+        padding-top: 3rem;
+        background: linear-gradient(to top, black, transparent);
+;
+    `;
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    const handleImageLoad = () => {
+        setIsLoaded(true);
+    };
 
     return (<>
         <Container>
-            <img src={url}></img>
+            {!isLoaded && <div>Loading...</div>}
+            <img onLoad={handleImageLoad} src={url} style={{ display: isLoaded ? 'block' : 'none' }}></img>
             <LibelleContainer>
                 <p>{title} - {year}</p>
                 <p className={style.painterName}>{painter}</p>
